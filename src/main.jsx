@@ -9,17 +9,20 @@ import Signup from "./SignUp.jsx";
 import AllProducts from "./AllProducts.jsx";
 import Cart from "./Cart.jsx";
 import { ToastContainer } from "react-toastify";
+import { CartProvider } from "./Cart/CartContext.jsx";
+// import "./toast.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
-    <NavBar />
-    <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/all" element={<AllProducts />} />
-      <Route path="/cart" element={<Cart />} />
-    </Routes>
-    <ToastContainer />
-  </BrowserRouter>
+  <CartProvider>
+    <BrowserRouter>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/all" element={<AllProducts />} />
+        <Route path="/cart" element={<Cart />} />
+      </Routes>
+    </BrowserRouter>
+  </CartProvider>
 );

@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { CartContext } from "../Cart/CartContext";
 
 function NavBar() {
+  const { cartItems } = useContext(CartContext);
   return (
     <div className="flex justify-center h-32">
       <div className="flex justify-between items-center  max-w-screen-lg w-full p-3 rounded-sm">
@@ -18,7 +21,12 @@ function NavBar() {
             Login
           </Link>
           <Link to={"/cart"}>
-            <img src="src/assets/cart.svg" />
+            <div className="relative">
+              <img src="src/assets/cart.svg" className="p-1" />
+              <div className="absolute right-0 -bottom-1">
+                {cartItems.length}
+              </div>
+            </div>
           </Link>
         </div>
       </div>

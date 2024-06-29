@@ -11,7 +11,9 @@ function App() {
         </div>
         <img src="src/assets/background.jpg" alt="" />
       </div>
-      <Catalog />
+      <div className="flex items-center justify-center">
+        <Catalog />
+      </div>
       <Footer />
     </div>
   );

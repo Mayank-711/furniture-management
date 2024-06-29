@@ -80,12 +80,11 @@ function Catalog({ allproducts }) {
 
   var currentFurnitureItems =
     allproducts === true ? furnitureItems : furnitureItems.slice(0, 3);
-  console.log(currentFurnitureItems);
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex justify-center items-center max-w-screen-lg ">
       <div className="w-full p-4 bg-white rounded">
         <h2 className="text-3xl font-bold mb-4 text-[#333333]">Catalog</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {currentFurnitureItems.map((item) => (
             <FurnitureItemCard
               key={item.id}
@@ -93,6 +92,7 @@ function Catalog({ allproducts }) {
               description={item.description}
               price={item.price}
               image={item.image}
+              id={item.id}
             />
           ))}
         </div>
