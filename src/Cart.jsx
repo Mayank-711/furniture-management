@@ -36,7 +36,7 @@ function Cart() {
               <img src={item.image} width={200} />
               <div>
                 <div className="text-2xl">{item.name}</div>
-                <p>Price: ₹{item.price}</p>
+                <div className="text-xl">Price: ₹{item.price}</div>
                 <div className="flex gap-5 items-center">
                   <button
                     type="button"
