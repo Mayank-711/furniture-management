@@ -1,12 +1,16 @@
 // Login.js
 import React, { useState } from "react";
+import { doSignInWithEmailAndPassword } from "./firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { auth } from "./firebase/firebase";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (!email || !password) {
       setError("Please fill in all fields");
@@ -15,7 +19,12 @@ function Login() {
     ) {
       setError("Invalid email address");
     } else {
-      // Call API to login
+      var res = await doSignInWithEmailAndPassword(email, password);
+      if (res.email === null) {
+        setError("Authentication error! Try again later");
+      } else {
+        navigate("/");
+      }
     }
   };
 

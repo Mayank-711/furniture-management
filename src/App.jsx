@@ -1,6 +1,5 @@
 import Catalog from "./compoments/catalog";
 import Footer from "./compoments/footer";
-import ProductCard from "./compoments/product_card";
 
 function App() {
   return (

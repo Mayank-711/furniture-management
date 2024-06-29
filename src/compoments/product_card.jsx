@@ -27,15 +27,13 @@ function FurnitureItemCard({ id, name, description, price, image }) {
         className="w-full h-48 object-cover rounded-t"
       />
       <h3 className="text-lg font-bold mb-2">{name}</h3>
-      <p className="text-gray-600" style={{ maxLines: 1, overflow: "clip" }}>
-        {description}
-      </p>
-      <p className="text-lg font-bold">₹{price}</p>
+      <div className="text-gray-600 line-clamp-2">{description}</div>
+      <p className="text-lg font-bold">₹{price} per day</p>
       <button
         className="bg-[#8B9467] hover:bg-[#8B9467] text-white font-bold py-2 px-4 rounded"
         onClick={() => handleAddToCart()}
       >
-        {clicked === false ? `Add to Cart` : "Done"}
+        {clicked === false ? `Add to Cart` : <img src="src/assets/check.svg" />}
       </button>
     </div>
   );

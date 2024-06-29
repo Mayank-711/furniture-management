@@ -1,8 +1,11 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../Cart/CartContext";
+import { auth } from "../firebase/firebase";
+import { AuthContext } from "../AuthContext";
 
 function NavBar() {
+  // const { currentUser } = useContext(AuthContext);
   const { cartItems } = useContext(CartContext);
   return (
     <div className="flex justify-center h-32">
@@ -17,9 +20,11 @@ function NavBar() {
           <Link to={"/all"} className="text-xl">
             Products
           </Link>
-          <Link to={"/login"} className="text-xl">
-            Login
-          </Link>
+          {null === null && (
+            <Link to={"/login"} className="text-xl">
+              Login
+            </Link>
+          )}
           <Link to={"/cart"}>
             <div className="relative">
               <img src="src/assets/cart.svg" className="p-1" />

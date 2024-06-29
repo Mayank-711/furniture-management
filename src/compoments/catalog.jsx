@@ -1,82 +1,24 @@
 // Catalog.js
-import React from "react";
+import React, { useEffect, useState } from "react";
 import FurnitureItemCard from "./product_card";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase/firebase";
 
 function Catalog({ allproducts }) {
-  const furnitureItems = [
-    {
-      id: 1,
-      name: "Sofa",
-      description: "Comfortable sofa for living room",
-      price: 100,
-      image: "https://via.placeholder.com/300",
-    },
-    {
-      id: 2,
-      name: "Chair",
-      description: "Ergonomic chair for office",
-      price: 50,
-      image: "https://via.placeholder.com/300",
-    },
-    {
-      id: 3,
-      name: "Table",
-      description: "Modern table for dining room",
-      price: 200,
-      image: "https://via.placeholder.com/300",
-    },
-    {
-      id: 4,
-      name: "Sofa",
-      description: "Comfortable sofa for living room",
-      price: 100,
-      image: "https://via.placeholder.com/300",
-    },
-    {
-      id: 5,
-      name: "Chair",
-      description: "Ergonomic chair for office",
-      price: 50,
-      image: "https://via.placeholder.com/300",
-    },
-    {
-      id: 6,
-      name: "Table",
-      description: "Modern table for dining room",
-      price: 200,
-      image: "https://via.placeholder.com/300",
-    },
-    {
-      id: 7,
-      name: "Sofa",
-      description: "Comfortable sofa for living room",
-      price: 100,
-      image: "https://via.placeholder.com/300",
-    },
-    {
-      id: 8,
-      name: "Chair",
-      description: "Ergonomic chair for office",
-      price: 50,
-      image: "https://via.placeholder.com/300",
-    },
-    {
-      id: 9,
-      name: "Table",
-      description: "Modern table for dining room",
-      price: 200,
-      image: "https://via.placeholder.com/300",
-    },
-    {
-      id: 10,
-      name: "Table",
-      description: "Modern table for dining room",
-      price: 200,
-      image: "https://via.placeholder.com/300",
-    },
+  const [furnitureItems, setFurnitureItems] = useState([]);
 
-    // Add more items to the array
-  ];
+  useEffect(() => {
+    async function fetchData() {
+      await getDocs(collection(db, "Furnicare")).then((querySnapshot) => {
+        const newData = querySnapshot.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }));
+        setFurnitureItems(newData);
+      });
+    }
+    fetchData();
+  }, []);
 
   var currentFurnitureItems =
     allproducts === true ? furnitureItems : furnitureItems.slice(0, 3);
@@ -88,10 +30,10 @@ function Catalog({ allproducts }) {
           {currentFurnitureItems.map((item) => (
             <FurnitureItemCard
               key={item.id}
-              name={item.name}
-              description={item.description}
-              price={item.price}
-              image={item.image}
+              name={item.Name}
+              description={item.Description}
+              price={item.Price}
+              image={item.Image}
               id={item.id}
             />
           ))}

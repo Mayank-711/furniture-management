@@ -8,9 +8,7 @@ import Login from "./Login.jsx";
 import Signup from "./SignUp.jsx";
 import AllProducts from "./AllProducts.jsx";
 import Cart from "./Cart.jsx";
-import { ToastContainer } from "react-toastify";
 import { CartProvider } from "./Cart/CartContext.jsx";
-// import "./toast.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <CartProvider>

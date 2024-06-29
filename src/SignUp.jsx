@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { doCreateUserWithEmailAndPassword } from "./firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 function Signup() {
   const [name, setName] = useState("");
@@ -7,7 +9,10 @@ function Signup() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState(null);
 
-  const handleSubmit = (event) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (event) => {
+    setError("");
     event.preventDefault();
     if (!name || !email || !password || !confirmPassword) {
       setError("Please fill in all fields");
@@ -17,8 +22,11 @@ function Signup() {
       setError("Invalid email address");
     } else if (password !== confirmPassword) {
       setError("Passwords do not match");
+    } else if (password.length < 6) {
+      setError("Password should be atleast 6 characters long");
     } else {
-      // Call API to signup
+      var res = await doCreateUserWithEmailAndPassword(email, password);
+      navigate("/");
     }
   };
 
