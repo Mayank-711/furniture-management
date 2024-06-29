@@ -1,14 +1,12 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../Cart/CartContext";
-import { auth } from "../firebase/firebase";
-import { AuthContext } from "../AuthContext";
 
 function NavBar() {
   // const { currentUser } = useContext(AuthContext);
   const { cartItems } = useContext(CartContext);
   return (
-    <div className="flex justify-center h-32">
+    <div className="flex justify-center h-32 items-center">
       <div className="flex justify-between items-center  max-w-screen-lg w-full p-3 rounded-sm">
         <div className="left">
           <img src="src\assets\logo.webp" width={150} />
@@ -32,6 +30,9 @@ function NavBar() {
                 {cartItems.length}
               </div>
             </div>
+          </Link>
+          <Link to={"/profile"}>
+            <img src="src/assets/person.svg" width={30} />
           </Link>
         </div>
       </div>

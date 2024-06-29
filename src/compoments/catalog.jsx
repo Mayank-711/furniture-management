@@ -4,7 +4,7 @@ import FurnitureItemCard from "./product_card";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 
-function Catalog({ allproducts }) {
+function Catalog({ allproducts, count }) {
   const [furnitureItems, setFurnitureItems] = useState([]);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ function Catalog({ allproducts }) {
   }, []);
 
   var currentFurnitureItems =
-    allproducts === true ? furnitureItems : furnitureItems.slice(0, 3);
+    allproducts === true ? furnitureItems : furnitureItems.slice(0, count);
   return (
     <div className="flex justify-center items-center max-w-screen-lg ">
       <div className="w-full p-4 bg-white rounded">

@@ -9,6 +9,8 @@ import Signup from "./SignUp.jsx";
 import AllProducts from "./AllProducts.jsx";
 import Cart from "./Cart.jsx";
 import { CartProvider } from "./Cart/CartContext.jsx";
+import ProfileUpdatePage from "./ProfileUpdateChange.jsx";
+import Footer from "./compoments/footer.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <CartProvider>
@@ -20,7 +22,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/signup" element={<Signup />} />
         <Route path="/all" element={<AllProducts />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/profile" element={<ProfileUpdatePage />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   </CartProvider>
 );
