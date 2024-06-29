@@ -11,8 +11,14 @@ function NavBar() {
           <Link to={"/"} className="text-xl">
             Home
           </Link>
+          <Link to={"/all"} className="text-xl">
+            Products
+          </Link>
           <Link to={"/login"} className="text-xl">
             Login
+          </Link>
+          <Link to={"/cart"}>
+            <img src="src/assets/cart.svg" />
           </Link>
         </div>
       </div>
