@@ -1,3 +1,4 @@
+import Catalog from "./compoments/catalog";
 import ProductCard from "./compoments/product_card";
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
       </div>
       <div>
         <div className="text-3xl">Top Products</div>
-        <div>{/* <ProductCard props={{ id: "1" }} /> */}</div>
+        <Catalog />
       </div>
     </div>
   );
